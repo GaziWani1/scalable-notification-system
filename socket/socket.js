@@ -8,7 +8,7 @@ io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
   socket.on("subscribe", (userId) => {
-    socket.join(userId); // User joins their personal room
+    socket.join(userId);
   });
 
   socket.on("disconnect", () => {

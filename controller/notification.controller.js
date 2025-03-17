@@ -34,6 +34,10 @@ export const postNotification = async (req, res, next) => {
 
 export const getNotification = async (req, res, next) => {
   try {
+    const notifications = await Notification.find({
+      userId : req.user.userId
+    })
+    res.status(201).json({ success: true, notifications });
   } catch (error) {
     next(error);
   }
