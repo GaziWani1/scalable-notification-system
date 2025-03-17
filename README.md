@@ -38,7 +38,7 @@ scalable-notifications/
 │── queue/              # Redis BullMQ setup
 │── socket/             # WebSocket (real-time notifications)
 │── views/              # (Optional) UI Templates
-│── app.js              # Main Express app
+│── index.js            # Main Express app
 │── server.js           # Entry point
 │── .env                # Environment variables
 │── package.json        # Dependencies
@@ -93,7 +93,6 @@ npm start
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/notifications` | `POST` | Send a new notification |
-| `/api/notifications/:userId` | `GET` | Get all notifications for a user |
 | `/api/notifications/:id/read` | `PUT` | Mark a notification as read |
 
 ---
@@ -148,33 +147,6 @@ const sendRealTimeNotification = (userId, notification) => {
 export { sendRealTimeNotification };
 ```
 
----
-
-## **📌 Scaling & Deployment**
-### **🔹 Running Multiple Workers for Scaling**
-```sh
-pm install pm2 -g
-pm start -- -i max  # Start multiple instances of workers
-```
-
-### **🔹 Deploying with Docker**
-Create a `Dockerfile`:
-```dockerfile
-FROM node:18
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY . .
-CMD ["npm", "start"]
-EXPOSE 5000
-```
-Build and Run:
-```sh
-docker build -t notification-service .
-docker run -p 5000:5000 notification-service
-```
-
----
 
 ## **📌 Future Enhancements**
 🚀 **Push Notifications with Firebase FCM**  
