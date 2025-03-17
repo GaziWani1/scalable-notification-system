@@ -93,7 +93,7 @@ npm start
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/notifications` | `POST` | Send a new notification |
-| pending GET/:id , PUT/:id
+| `/api/notifications` | `GET`  | Get all logged in user notification|
 
 ---
 
