@@ -1,7 +1,8 @@
 import Notification from "../model/notification.model.js"; 
 
 export const processNotification = async (notification) => {
-  console.log("Processing Notification:", notification);
+  // test data
+  // console.log("Processing Notification:", notification); 
 
   // Check the notification type and process it
   if (notification.type === "email") {
