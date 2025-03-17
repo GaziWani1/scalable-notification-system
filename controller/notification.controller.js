@@ -1,5 +1,6 @@
 import Notification from '../model/notification.model.js';
 import { addNotificationToQueue } from '../queue/notification.queue.js';
+import { sendRealTimeNotification } from '../socket/socket.js';
 import runTransaction from '../utils/transactionHelper.js';
 
 export const postNotification = async (req, res, next) => {
@@ -23,7 +24,7 @@ export const postNotification = async (req, res, next) => {
     });
 
     addNotificationToQueue(result.notification);
-    // sendRealTimeNotification(req.user.userId, notification);
+    sendRealTimeNotification(req.user.userId, result.notification);
 
     res.status(201).json({ success: true, notification: result.notification });
   } catch (error) {
